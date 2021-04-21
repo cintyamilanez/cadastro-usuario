@@ -3,13 +3,11 @@ package br.com.cadastro.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="enderecos")
 public class Endereco {
 
-    //TODO: Resolver mapeamento de entidade, campo ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

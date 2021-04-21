@@ -16,7 +16,21 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public void criarUsuario(Usuario usuario) {
-        usuarioRepository.save(usuario);
+
+        try {
+            usuarioRepository.save(usuario);
+        } catch (Exception e) {
+
+            String nomeClasse = e.getClass().getName();
+            if(
+                    nomeClasse.equals("org.springframework.dao.DataIntegrityViolationException") ||
+                    nomeClasse.equals("org.springframework.orm.jpa.JpaSystemException")
+            ) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Favor informar os dados corretamente!");
+            } else {
+                throw e;
+            }
+        }
     }
 
     public Usuario obterUsuario(String email) {
