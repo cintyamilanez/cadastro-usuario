@@ -10,20 +10,20 @@ import java.util.List;
 @Table(name="usuarios")
 public class Usuario {
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
     @Id
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String CPF;
 
-    @Column
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date nascimento;
-    
+
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Endereco> endereco;
 

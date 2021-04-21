@@ -14,25 +14,25 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
+    @Column(nullable = false)
     private String logradouro;
 
-    @Column
+    @Column(nullable = false)
     private int numero;
 
-    @Column
+    @Column(nullable = false)
     private String complemento;
 
-    @Column
+    @Column(nullable = false)
     private String bairro;
 
-    @Column
+    @Column(nullable = false)
     private String cidade;
 
-    @Column
+    @Column(nullable = false)
     private String estado;
 
-    @Column
+    @Column(nullable = false)
     private String CEP;
 
     @JsonIgnore
