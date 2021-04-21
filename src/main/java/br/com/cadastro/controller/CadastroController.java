@@ -1,33 +1,35 @@
 package br.com.cadastro.controller;
 
+import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Usuario;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.cadastro.service.EnderecoService;
+import br.com.cadastro.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CadastroController {
 
-    //TODO: Precisa receber um usuario no formato json
+    @Autowired
+    private UsuarioService usuarioService;
+    @Autowired
+    private EnderecoService enderecoService;
+
     @PostMapping("/usuario")
-    public String criarUsuario (@RequestBody Usuario usuario) {
-
-        return "recebido o usuario: " + usuario.getNome();
-
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void criarUsuario (@RequestBody Usuario usuario) {
+        usuarioService.criarUsuario(usuario);
     }
 
-    //TODO: Precisa receber um endereco no formato json e associar a um usuario
     @PostMapping("/usuario/{email}/endereco")
-    public void criarEndereco () {
-
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void criarEndereco (@PathVariable String email, @RequestBody Endereco endereco) {
+        enderecoService.cadastrarEndereco(email,endereco);
     }
 
-    //TODO: Preciso retornar um usuario e seus enderecos
     @GetMapping ("/usuario/{email}")
-    public String retornaUsuario () {
-
-        return "usuario: Paulo";
-
+    public Usuario retornaUsuario (@PathVariable String email) {
+        return usuarioService.obterUsuario(email);
     }
 }

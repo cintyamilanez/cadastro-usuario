@@ -1,5 +1,7 @@
 package br.com.cadastro.model;
 
+import java.util.List;
+
 public class Endereco {
 
     private String logradouro;
