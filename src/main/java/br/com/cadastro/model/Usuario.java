@@ -23,9 +23,8 @@ public class Usuario {
     @Column
     @Temporal(TemporalType.DATE)
     private Date nascimento;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "usuario")
+    
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Endereco> endereco;
 
     public String getNome() {
