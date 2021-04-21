@@ -1,16 +1,43 @@
 package br.com.cadastro.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="enderecos")
 public class Endereco {
 
+    //TODO: Resolver mapeamento de entidade, campo ID
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column
     private String logradouro;
+
+    @Column
     private int numero;
+
+    @Column
     private String complemento;
+
+    @Column
     private String bairro;
+
+    @Column
     private String cidade;
+
+    @Column
     private String estado;
+
+    @Column
     private String CEP;
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Usuario usuario;
 
     public String getLogradouro() {
         return logradouro;
@@ -66,5 +93,21 @@ public class Endereco {
 
     public void setCEP(String CEP) {
         this.CEP = CEP;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
