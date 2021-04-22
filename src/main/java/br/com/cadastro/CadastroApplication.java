@@ -8,10 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan("br.com.cadastro.service")
-@EnableJpaRepositories("br.com.cadastro.repository")
-@EntityScan("br.com.cadastro.model")
 public class CadastroApplication {
 
 	public static void main(String[] args) {
