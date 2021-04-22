@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "0a904ffe-c3c8-4147-a78e-863d81c8af72",
+		"name": "Cadastro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastro de Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Cintya\",\r\n    \"email\": \"cintya_milanez@hotmail.com\",\r\n    \"cpf\": \"383.650.248-88\",\r\n    \"nascimento\": \"1989-03-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastro de Endereço",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"logradouro\": \"Rua Pacajás \",\r\n    \"numero\": 176,\r\n    \"complemento\": \"apto 53 B\",\r\n    \"bairro\": \"Vila Pinheirinho\",\r\n    \"cidade\": \"Santo André\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": \"09190-250\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/cintya_milanez@hotmail.com/endereco",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"cintya_milanez@hotmail.com",
+						"endereco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuario/cintya_milanez@hotmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"cintya_milanez@hotmail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
